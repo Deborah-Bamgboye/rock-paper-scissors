@@ -25,31 +25,31 @@ function playRound(humanChoice, computerChoice){
 switch (true) {
     case (humanChoice === computerChoice):
     // Code to run if expression === value1
-    console.log("No one winsz, computer chose" )
+    console.log("No one winsz, computer chose " + computerChoice )
     break;
     case (humanChoice === "rock" && computerChoice === "paper"):
-    console.log("You lose, computer chose" )
+    console.log("You lose, computer chose " + computerChoice )
     computerScore++ 
     // Code to run if expression === value2
     break;
     case (humanChoice === "paper" && computerChoice === "rock"):
-        console.log("You win, computer chose ")
+        console.log("You win, computer chose " + computerChoice)
         humanScore++
     break;
     case (humanChoice === "paper" && computerChoice === "scissors"):
-            console.log("You lose, computer chose ")
+            console.log("You lose, computer chose " + computerChoice)
             computerScore++
     break;
     case (humanChoice === "scissors" && computerChoice === "paper"):
-            console.log("You win, computer chose " )
+            console.log("You win, computer chose " + computerChoice )
             humanScore++
     break;
     case (humanChoice === "scissors" && computerChoice === "rock"):
-            console.log("You lose, computer chose " )
+            console.log("You lose, computer chose " + computerChoice )
             computerScore++
     break;
     case (humanChoice === "rock" && computerChoice === "scissors"):
-            console.log("You win, computer chose " )
+            console.log("You win, computer chose " + computerChoice )
             humanScore++
     break;
 }
@@ -64,6 +64,13 @@ function playGame() {
      
        
     }
-   console.log("Your score: " + humanScore + "," + "computer's: " + computerScore) 
+   console.log("Your score: " + humanScore + "," + "computer's: " + computerScore)
+   if (humanScore > computerScore) {
+        console.log("congratulations! You win")
+   } else if (humanScore === computerScore) {
+        console.log("No-one wins!")
+   } else{
+    console.log("You lose computer wins!")
+   }
 }
 playGame()
