@@ -1,18 +1,27 @@
 console.log("Hello World")
 let options = ["rock","paper","scissors"]
+
 function getComputerChoice() {
 let num = Math.floor(Math.random() * 3)
- 
+
 return options[num]
     
 }
+let gameArea = document.querySelector("#game-area")
+let rock = document.querySelector('#rock')
+let paper = document.querySelector('#paper')
+let scissors = document.querySelector('#scissors')
+let score_keep = document.createElement('div')
+
+gameArea.appendChild(score_keep)
+ 
 //initialise the array with the three values
 // use math.random to generate a random index for the array
 //  which the engine will return as the value for choice
-function getHumanChoice() {
 
-    return (prompt("rock,paper or scissors")).toLowerCase()
-}
+
+
+
 let humanScore = 0
 let computerScore = 0
 
@@ -53,24 +62,40 @@ switch (true) {
             humanScore++
     break;
 }
-}
-// const humanSelection = getHumanChoice;
-// const computerSelection = getComputerChoice;
+ score_keep.textContent = `Current Scores:Human - ${humanScore} Computer - ${computerScore}`
 
+ }
 
-function playGame() {
-    for (let i = 0; i < 5.; i++) {
-        playRound(getHumanChoice(), getComputerChoice());
+ rock.addEventListener('click', function () {
+        
+        playRound("rock",getComputerChoice())
+    })
+ paper.addEventListener('click', function () {
+    
+    playRound("paper",getComputerChoice())
+    })
+ scissors.addEventListener('click', function () {
+    playRound("scissors",getComputerChoice())
+    })
+// function playGame() {
+//     // for (let i = 0; i < 5.; i++) {
+//         // playRound(getHumanChoice(), getComputerChoice());
+
      
        
-    }
-   console.log("Your score: " + humanScore + "," + "computer's: " + computerScore)
-   if (humanScore > computerScore) {
-        console.log("congratulations! You win")
-   } else if (humanScore === computerScore) {
-        console.log("No-one wins!")
-   } else{
-    console.log("You lose computer wins!")
-   }
-}
-playGame()
+//     // }
+    
+    
+//    console.log("Your score: " + humanScore + "," + "computer's: " + computerScore)
+  
+  
+//     rock.addEventListener('click', playGame)
+//  paper.addEventListener('click', playGame)
+//  scissors.addEventListener('click', playGame)
+
+ // so what are we meant to deal with in the first place
+ /* i press a button,
+ the value of humanchoice is selected based on the button and simultanoeusly,
+ a round runs.
+ let's put the whole winner loser logic on pause)
+ */
