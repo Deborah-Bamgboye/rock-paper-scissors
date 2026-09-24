@@ -12,9 +12,11 @@ let rock = document.querySelector('#rock')
 let paper = document.querySelector('#paper')
 let scissors = document.querySelector('#scissors')
 let score_keep = document.createElement('div')
+let result = document.createElement('p')
 let congrats 
 
 gameArea.appendChild(score_keep)
+gameArea.appendChild(result)
  
 //initialise the array with the three values
 // use math.random to generate a random index for the array
@@ -35,31 +37,31 @@ function playRound(humanChoice, computerChoice){
 switch (true) {
     case (humanChoice === computerChoice):
     // Code to run if expression === value1
-    console.log("No one winsz, computer chose " + computerChoice )
+    result.textContent = "No one winsz, computer chose " + computerChoice 
     break;
     case (humanChoice === "rock" && computerChoice === "paper"):
-    console.log("You lose, computer chose " + computerChoice )
+    result.textContent = "You lose, computer chose " + computerChoice 
     computerScore++ 
     // Code to run if expression === value2
     break;
     case (humanChoice === "paper" && computerChoice === "rock"):
-        console.log("You win, computer chose " + computerChoice)
+        result.textContent ="You win, computer chose " + computerChoice
         humanScore++
     break;
     case (humanChoice === "paper" && computerChoice === "scissors"):
-            console.log("You lose, computer chose " + computerChoice)
+            result.textContent ="You lose, computer chose " + computerChoice
             computerScore++
     break;
     case (humanChoice === "scissors" && computerChoice === "paper"):
-            console.log("You win, computer chose " + computerChoice )
+            result.textContent = "You win, computer chose " + computerChoice 
             humanScore++
     break;
     case (humanChoice === "scissors" && computerChoice === "rock"):
-            console.log("You lose, computer chose " + computerChoice )
+            result.textContent = "You lose, computer chose " + computerChoice 
             computerScore++
     break;
     case (humanChoice === "rock" && computerChoice === "scissors"):
-            console.log("You win, computer chose " + computerChoice )
+            result.textContent = "You win, computer chose " + computerChoice 
             humanScore++
     break;
 }
@@ -96,6 +98,7 @@ function resetGame(){
         computerScore = 0
         scoreTracker()
         congrats.textContent = ""
+        result.textContent = ""
      })
         
 }
