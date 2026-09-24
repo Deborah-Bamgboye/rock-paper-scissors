@@ -12,6 +12,7 @@ let rock = document.querySelector('#rock')
 let paper = document.querySelector('#paper')
 let scissors = document.querySelector('#scissors')
 let score_keep = document.createElement('div')
+let congrats 
 
 gameArea.appendChild(score_keep)
  
@@ -62,24 +63,42 @@ switch (true) {
             humanScore++
     break;
 }
- score_keep.textContent = `Current Scores:Human - ${humanScore} Computer - ${computerScore}`
+ scoreTracker()
 
   checkWinner() 
 }
  
 // const humanSelection = getHumanChoice;
 // const computerSelection = getComputerChoice;
+    function scoreTracker() {
+        score_keep.textContent = `Current Scores:Human - ${humanScore} Computer - ${computerScore}`
+    }
 
  function checkWinner() {
+    congrats = document.createElement("div")
     if (humanScore === 5) {
-        console.log("Congratulations! You reached 5 points first. You win the game!");
+        
+        congrats.textContent = "Congratulations! You reached 5 points first. You win the game!";
         resetGame()
       
     } else if (computerScore === 5) {
-        console.log("The computer reached 5 points first. You lose the game!");
+        congrats.textContent = "The computer reached 5 points first. You lose the game!";
         resetGame()
 
 }}
+function resetGame(){
+    let resetButton = document.createElement("button")
+        resetButton.textContent = "Reset Game"
+     gameArea.appendChild(congrats)
+     congrats.appendChild(resetButton)
+     resetButton.addEventListener('click', function () {
+        humanScore = 0
+        computerScore = 0
+        scoreTracker()
+        congrats.textContent = ""
+     })
+        
+}
 
  rock.addEventListener('click', function () {
         
