@@ -64,7 +64,22 @@ switch (true) {
 }
  score_keep.textContent = `Current Scores:Human - ${humanScore} Computer - ${computerScore}`
 
- }
+  checkWinner() 
+}
+ 
+// const humanSelection = getHumanChoice;
+// const computerSelection = getComputerChoice;
+
+ function checkWinner() {
+    if (humanScore === 5) {
+        console.log("Congratulations! You reached 5 points first. You win the game!");
+        resetGame()
+      
+    } else if (computerScore === 5) {
+        console.log("The computer reached 5 points first. You lose the game!");
+        resetGame()
+
+}}
 
  rock.addEventListener('click', function () {
         
