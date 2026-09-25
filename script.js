@@ -30,9 +30,10 @@ let computerScore = 0
 
 
 
-
+let isGameOver = false;
 function playRound(humanChoice, computerChoice){
 // if they are both the same
+if (isGameOver) return;
 
 switch (true) {
     case (humanChoice === computerChoice):
@@ -69,6 +70,7 @@ switch (true) {
 
   checkWinner() 
 }
+
  
 // const humanSelection = getHumanChoice;
 // const computerSelection = getComputerChoice;
@@ -77,16 +79,26 @@ switch (true) {
     }
 
  function checkWinner() {
-    congrats = document.createElement("div")
-    if (humanScore === 5) {
-        
-        congrats.textContent = "Congratulations! You reached 5 points first. You win the game!";
-        resetGame()
-      
-    } else if (computerScore === 5) {
-        congrats.textContent = "The computer reached 5 points first. You lose the game!";
-        resetGame()
 
+    congrats = document.createElement("div")
+    if (humanScore === 5 || computerScore === 5) {
+        isGameOver = true; // Lock the game state
+        
+        // 3. Disable the choice buttons
+        rock.disabled = true;
+        paper.disabled = true;
+        scissors.disabled = true;
+        if (humanScore === 5) {
+        
+        congrats.textContent = "Congratulations! You reached 5 points first. You win the game!  ";
+    
+      
+        } else if (computerScore === 5) {
+        congrats.textContent = "The computer reached 5 points first. You lose the game!";
+        
+
+    }
+    resetGame()
 }}
 function resetGame(){
     let resetButton = document.createElement("button")
@@ -97,7 +109,11 @@ function resetGame(){
         humanScore = 0
         computerScore = 0
         scoreTracker()
-        congrats.textContent = ""
+        isGameOver = false;
+        rock.disabled= false;
+        paper.disabled = false;
+        scissors.disabled = false;
+        gameArea.removeChild(congrats)
         result.textContent = ""
      })
         
